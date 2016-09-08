@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aimozart.user.myapplicationlayouttest">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT">
+    </uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/aim_logo"
+        android:label="AImozart"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.MediaActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.MenuActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MediaActivity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.IdentufyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MediaActivity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.AddActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.DetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.HelpActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MediaActivity"
+            >
+        </activity>
+
+        <activity
+            android:name="com.aimozart.user.myapplicationlayouttest.UseGuide"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+
+    </application>
+
+</manifest>

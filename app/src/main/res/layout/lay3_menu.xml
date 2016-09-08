@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:id="@+id/layer3"
+    >
+
+
+
+    <!--<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="新增清單"
+            android:id="@+id/addBtn"
+            android:onClick="addBtn"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="新增測試"
+            android:id="@+id/newExampleBtn"
+            android:layout_weight="1"
+            android:onClick="newExampleBtn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="刪除全部資料"
+            android:id="@+id/deleteAllBtn"
+            android:layout_weight="1"
+            android:onClick="deleteAllBtn" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/countMainTV"
+            android:textAlignment="center"
+            android:layout_weight="1" />
+    </LinearLayout>-->
+
+    <com.hb.views.PinnedSectionListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50sp"
+        android:choiceMode="singleChoice"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:adjustViewBounds="true"
+        android:gravity="bottom"
+        android:maxHeight="20px"
+        android:minHeight="20px"
+        android:layout_alignBottom="@+id/listView"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/Page1btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="音樂播放"
+            android:onClick="Page1btn"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page2btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="波形辨識"
+            android:onClick="Page2btn"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page3btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清單管理"
+            android:textColor="#FFFFFF"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page4btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="設定/幫助"
+            android:onClick="Page4btn"
+            android:background="#00FFFFFF"/>
+
+    </LinearLayout>
+
+</LinearLayout>

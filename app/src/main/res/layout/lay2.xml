@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layer2"
+    tools:context=".IdentufyActivity">
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="波型辨識"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/wavetitle" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detectimage"
+        android:src="@drawable/detectimage"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20sp"
+        android:paddingBottom="20sp"
+        android:id="@+id/detectlist"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.5"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detect"
+        android:background="#00FFFFFF"
+        android:src="@drawable/detect"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/mfccfeature"
+        android:layout_marginTop="69dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:adjustViewBounds="true"
+        android:maxHeight="20px"
+        android:minHeight="20px"
+        android:layout_alignBottom="@+id/mfccfeature" >
+
+        <Button
+            android:id="@+id/Page1btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="音樂播放"
+            android:onClick="Page1btn"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page2btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="波形辨識"
+            android:textColor="#FFFFFF"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page3btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清單管理"
+            android:onClick="Page3btn"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/Page4btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="設定/幫助"
+            android:onClick="Page4btn"
+            android:background="#00FFFFFF"/>
+
+    </LinearLayout>
+
+</LinearLayout>

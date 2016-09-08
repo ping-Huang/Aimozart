@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="新增資料"
+        android:id="@+id/addTitle"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="清單名稱"
+            android:id="@+id/addTitleName"
+            android:layout_weight="1"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:id="@+id/etName"
+            android:layout_weight="2"
+            android:hint="清單名稱"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="清除欄位"
+            android:id="@+id/clearBtn"
+            android:layout_weight="1"
+            android:onClick="clearBtn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="回主選單"
+            android:id="@+id/cancelBtn"
+            android:layout_weight="1"
+            android:onClick="cancelBtn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="新增"
+            android:id="@+id/confirmBtn"
+            android:layout_weight="1"
+            android:onClick="confirmBtn" />
+    </LinearLayout>
+</LinearLayout>

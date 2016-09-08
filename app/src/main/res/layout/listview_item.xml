@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:background="#FFFF"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listcontent"
+        >
+
+        <TextView
+            android:id="@+id/nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="清單名"
+            android:ellipsize="end"
+            android:textSize="25sp"
+            android:layout_weight="50"
+            android:layout_marginLeft="20dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/additional"
+            android:src = "@drawable/listoption"
+            android:background="#FFFF"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/option"
+        android:background="#A9706A"
+        android:visibility="gone"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/listDelete"
+            android:src="@drawable/deletebtn"
+            android:background="#A9706A"
+            android:layout_weight="3"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/listRename"
+            android:src="@drawable/renamebtn"
+            android:background="#A9706A"
+            android:layout_weight="3"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/opitoncancel"
+                android:src="@drawable/cancel"
+                android:background="#A9706A"
+                android:layout_gravity="right"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
