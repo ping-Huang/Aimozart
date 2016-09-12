@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:weightSum="1"
     android:id="@+id/layer4"
+    tools:background="@mipmap/helpbg"
     >
 
 
@@ -26,13 +28,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:adjustViewBounds="true"
         android:layout_weight="1"
+        android:gravity="bottom"
         android:maxHeight="20px"
         android:minHeight="20px"
         android:layout_alignBottom="@+id/listView" >
@@ -40,38 +43,40 @@
         <Button
             android:id="@+id/Page1btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="音樂播放"
             android:onClick="Page1btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page2btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="波形辨識"
             android:onClick="Page2btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page3btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="清單管理"
             android:onClick="Page3btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page4btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
-            android:text="設定/幫助"
-            android:textColor="#FFFFFF"
-            android:background="#00FFFFFF"/>
+            android:text="幫助"
+            android:background="#FFFFFFFF"/>
 
     </LinearLayout>
 

@@ -3,98 +3,103 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/layer2"
+    tools:background="@mipmap/idbg"
     tools:context=".IdentufyActivity">
 
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="波型辨識"
-        android:textSize="40sp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/wavetitle" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="波型辨識"-->
+        <!--android:textSize="40sp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:id="@+id/wavetitle" />-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="69dp" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detectimage"
-        android:src="@drawable/detectimage"
+        android:src="@mipmap/detectimage"
         android:layout_gravity="center_horizontal" />
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20sp"
-        android:paddingBottom="20sp"
+        android:layout_height="130dp"
         android:id="@+id/detectlist"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.5"
+        tools:listitem="@layout/liststyle"
         />
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detect"
         android:background="#00FFFFFF"
-        android:src="@drawable/detect"
+        android:src="@mipmap/detect"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/mfccfeature"
-        android:layout_marginTop="69dp" />
-
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:id="@+id/mfccfeature"-->
+        <!--android:layout_marginTop="69dp" />-->
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:gravity="top"
+        android:gravity="bottom"
         android:adjustViewBounds="true"
         android:maxHeight="20px"
-        android:minHeight="20px"
-        android:layout_alignBottom="@+id/mfccfeature" >
+        android:minHeight="20px">
 
         <Button
             android:id="@+id/Page1btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="音樂播放"
             android:onClick="Page1btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page2btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="波形辨識"
-            android:textColor="#FFFFFF"
-            android:background="#00FFFFFF"/>
+            android:background="#FFFFFFFF"/>
 
         <Button
             android:id="@+id/Page3btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="清單管理"
             android:onClick="Page3btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page4btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
-            android:text="設定/幫助"
+            android:text="幫助"
             android:onClick="Page4btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:background="#F000"/>
 
     </LinearLayout>
 

@@ -224,7 +224,8 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
                 }
                 //s = s+"特徵"+String.valueOf(i)+": "+String.valueOf(sa.avgFeature[i])+'\n';
                 //s = s+"特徵權重"+String.valueOf(i)+": "+String.valueOf(sa.sumOfnormalFeatrue[i])+'\n';
-                adapter.buttonArray.get(num).setImageResource(R.drawable.isdetected);
+//                adapter.buttonArray.get(num).setImageResource(R.drawable.isdetected);
+                adapter.bgArray.get(num).setBackgroundResource(R.mipmap.tv_finish_bg);
                 num++;
                 if(num<list.size()) {
                     HashMap<String, Object> song = new HashMap<String, Object>();
@@ -247,7 +248,8 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
     {
         Log.d("numstatebt", "" + adapter.buttonArray.size());
         //if(adapter.buttonArray.get(num)!=null)
-        adapter.buttonArray.get(num).setImageResource(R.drawable.classifing);
+//        adapter.buttonArray.get(num).setImageResource(R.drawable.classifing);
+        adapter.bgArray.get(num).setBackgroundResource(R.mipmap.tv_detecting_bg);
         //filename = music+".mp3";
         //File input  = new File(path+"/Music/"+filename);
         File input = new File(music);
@@ -293,8 +295,13 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
                     newSample((String) song.get("path"));
                     //隱藏 detect button 並 增加listview 高度
                     detect.setVisibility(View.GONE);
-
-                    detectImage.setImageResource(R.drawable.detecting);
+                    for(int i=0; i<list.size(); i++)
+                    {
+                        adapter.buttonArray.get(i).setVisibility(View.GONE);
+                        adapter.bgArray.get(i).setBackgroundResource(R.mipmap.tv_detect_bg);
+                    }
+                    //更換正在辨識背景
+                    detectImage.setImageResource(R.mipmap.detecting);
                     /*long start_test_time = System.nanoTime();
                 try{
                 predict.main(testArgs);
@@ -319,7 +326,7 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
             }
         });
         //adapter = new SimpleAdapter(this,list,R.layout.liststyle,new String[]{"name"},new int[]{R.id.SongName});
-        adapter = new ButtonAdapterID(this,list,R.layout.liststyle,new String[]{"name","image"},new int[]{R.id.SongName,R.id.cancel});
+        adapter = new ButtonAdapterID(this,list,R.layout.liststyle,new String[]{"name","image"},new int[]{R.id.SongName,R.id.cancel,R.id.SongBg});
         Songlist.setAdapter(adapter);
         //更新list
     }
@@ -343,11 +350,11 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
         selectTolist = new boolean[picid.length];
         for(int i=0; i<resultpic.length; i++){
             if(musicType[i]==1)
-                picid[i]=R.drawable.alpha;
+                picid[i]=R.mipmap.alpha;
             else if(musicType[i]==2)
-                picid[i]=R.drawable.beta;
+                picid[i]=R.mipmap.beta;
             else if(musicType[i]==3)
-                picid[i] =R.drawable.theta;
+                picid[i] =R.mipmap.theta;
             ImageView imageView = new ImageView(this);
             resultpic[i] = imageView;
             imageView.setBackgroundResource(picid[i]);
@@ -360,6 +367,8 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.lay2);
+                layer2 = (LinearLayout)findViewById(R.id.layer2);
+                layer2.setBackground(getLocalBitmap(IdentufyActivity.this, R.drawable.idbg));
                 list.clear();
                 adapter.notifyDataSetChanged();
                 num = 0;
@@ -371,11 +380,11 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
             public void onClick(View v) {
                 if(selectTolist[currentPosition]) {
                     selectTolist[currentPosition] = false;
-                    MusicState.setImageResource(R.drawable.cancel);
+                    MusicState.setImageResource(R.mipmap.unckeck);
                 }
                 else{
                     selectTolist[currentPosition] = true;
-                    MusicState.setImageResource(R.drawable.select);
+                    MusicState.setImageResource(R.mipmap.check);
                 }
             }
         });
@@ -549,9 +558,9 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
         MusicName.setText((String) song.get("name"));
         //Log.d("position", "" + (String)song.get("name")+ " "+position);
         if(selectTolist[position])
-            MusicState.setImageResource(R.drawable.select);
+            MusicState.setImageResource(R.mipmap.check);
         else
-            MusicState.setImageResource(R.drawable.cancel);
+            MusicState.setImageResource(R.mipmap.unckeck);
     }
 
     @Override
@@ -766,7 +775,7 @@ public class IdentufyActivity extends Activity implements OnGestureListener, Vie
     @Override
     public void onPause() {
         super.onPause();
-        System.gc();
+        //System.gc();
     }
     public BitmapDrawable getLocalBitmap(Context con, int resourceId){
         InputStream inputStream = con.getResources().openRawResource(resourceId);

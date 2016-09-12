@@ -76,11 +76,11 @@ public class Sample{
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                int bufferSize = AudioTrack.getMinBufferSize(audioFrequency,
-                        audioChannel, audioFormat);
-                Log.v("bufSize", String.valueOf(bufferSize));
-                mAudioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, audioFrequency,
-                        audioChannel, audioFormat, audioTrackSize, AudioTrack.MODE_STATIC);
+//                int bufferSize = AudioTrack.getMinBufferSize(audioFrequency,
+//                        audioChannel, audioFormat);
+//                Log.v("bufSize", String.valueOf(bufferSize));
+//                mAudioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, audioFrequency,
+//                        audioChannel, audioFormat, audioTrackSize, AudioTrack.MODE_STATIC);
                 byte[] audioBuffer = new byte[blockSize*2];
                 samples = new short[blockSize];
                 DataInputStream din = null;

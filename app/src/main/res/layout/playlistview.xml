@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants"
-    >
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id = "@+id/listcontent"
-        android:background="#FFFF"
+        android:background="@mipmap/tv_detect_bg"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:textSize="25sp"
+            tools:text="alpha6"
+            android:layout_marginLeft="12dp"
+            android:textSize="19dp"
+            android:textColor="@color/tv_white"
             android:ellipsize="end"
             android:singleLine="true"
             android:id="@+id/list_name"
+            android:padding="15dp"
             android:layout_weight="7"
             />
 
@@ -33,7 +37,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
+                tools:text="種類:α"
+                android:textColor="@color/tv_white"
+                android:textSize="15dp"
+                android:padding="15dp"
                 android:singleLine="true"
                 android:id="@+id/songType"
                 android:layout_gravity="right"
@@ -51,10 +58,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/additional"
-                android:src="@drawable/listoption"
-                android:background="#FFFF"
+                android:src="@mipmap/listoption"
+                android:background="#0FFF"
                 android:focusable="false"
                 android:layout_gravity="right"
+                android:padding="10dp"
                 android:layout_weight="1"
                 />
         </LinearLayout>
@@ -65,7 +73,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#A9706A"
+        android:background="#121a1c"
         android:id = "@+id/option"
         android:visibility="gone"
         >
@@ -74,17 +82,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/deletelist"
-            android:src="@drawable/deletsong"
-            android:background="#A9706A"
+            android:src="@mipmap/deletsong"
+            android:background="#0FFF"
             android:layout_weight="3"
+            android:padding="11.7dp"
             />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/movetolist"
-            android:src="@drawable/addlistbtn"
-            android:background="#A9706A"
+            android:src="@mipmap/addlistbtn"
+            android:background="#0FFF"
             android:layout_weight="3"
+            android:padding="11.7dp"
             />
         <LinearLayout
             android:orientation="vertical"
@@ -98,7 +108,7 @@
                 android:layout_gravity="right"
                 android:id="@+id/canceladdition"
                 android:src="@drawable/cancel"
-                android:background="#A9706A"
+                android:background="#0FFF"
                 />
         </LinearLayout>
     </LinearLayout>

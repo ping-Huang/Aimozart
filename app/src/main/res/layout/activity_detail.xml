@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="#fabb5e"
-    >
+    android:background="@mipmap/listbg">
 
     <!--<LinearLayout
         android:orientation="horizontal"
@@ -40,7 +41,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="74dp"
+        >
 
 
         <TextView
@@ -49,6 +51,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tvTitle"
             android:layout_weight="1"
+            tools:text="五月天的ALPHA"
             android:textAlignment="center"
             android:layout_marginTop="20dp" />
     </LinearLayout>
@@ -59,20 +62,23 @@
         android:id="@+id/playlistView"
         android:layout_gravity="center_horizontal"
         android:choiceMode="singleChoice"
-        android:layout_weight="0.99" />
+        android:layout_weight="0.99"
+        tools:listitem="@layout/playlistview"
+        />
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="90dp"
+        android:padding="10dp"
+        >
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="回清單列表"
             android:id="@+id/backToMenuBtn"
             android:layout_gravity="center_horizontal"
-            android:elegantTextHeight="true"
+            android:src="@mipmap/guide_return_icon"
             android:onClick="backToMenu"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />

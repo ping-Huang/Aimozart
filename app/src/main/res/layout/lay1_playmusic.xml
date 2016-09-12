@@ -2,49 +2,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/layer1"
-    >
+    tools:background="@mipmap/playbg"
+    android:id="@+id/layer1">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="13dp"
+        android:gravity="center"
         >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playeroption"
-            android:src="@drawable/playeroption"
+            android:src="@mipmap/playeroption"
             android:background="#00FFFFFF"
             />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.18"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="15dp"
             android:textSize="35sp"
             android:id="@+id/searcharea"
-            android:background="@drawable/searcharea"
-            android:drawableRight="@drawable/search"
+            android:background="@mipmap/searchbar"
             android:inputType="text"
             android:longClickable="false"
             />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/search"
+            android:id="@+id/img_search" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5sp"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="清單名稱"
+            android:textSize="22dp"
             android:textColor="#FFFF"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:padding="10dp"
             android:id="@+id/ListName"
             android:layout_gravity="center_horizontal"
             />
@@ -54,9 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Song Name"
+            android:textSize="22dp"
             android:textColor="#FFFF"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:padding="10sp"
             android:layout_gravity="center_horizontal"
             android:ellipsize="marquee"
             android:focusable="true"
@@ -64,12 +74,14 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             /><requestFocus/>
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="23dp" />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/SongPicture"
-            android:src="@drawable/songpicture"
+            android:src="@mipmap/songpicture"
             android:layout_gravity="center_horizontal"
             />
 
@@ -90,23 +102,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
+                tools:text="00:00"
                 android:textColor="#FFFF"
                 android:layout_weight="1"
                 android:id="@+id/nowPlayTime" />
 
         </LinearLayout>
-
+        
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="40sp"
+            android:layout_height="wrap_content"
             android:id="@+id/playMode"
-            android:src="@drawable/mode0"
+            android:src="@mipmap/mode0"
             android:background="#00FFFFFF"
             android:layout_gravity="center_horizontal"
             />
     </LinearLayout>
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="34dp" />
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
@@ -122,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnPrev"
-            android:src="@drawable/prev"
+            android:src="@mipmap/prev"
             android:background="#00FFFFFF"
             android:layout_weight="1"
             android:layout_gravity="bottom"
@@ -132,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnPlay"
-            android:src="@drawable/play"
+            android:src="@mipmap/play"
             android:layout_weight="1"
             android:background="#00FFFFFF"
             />
@@ -141,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnNext"
-            android:src="@drawable/next"
+            android:src="@mipmap/next"
             android:background="#00FFFFFF"
             android:layout_weight="1"
             android:layout_gravity="bottom"
@@ -150,7 +164,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="#00FFFFFF"
@@ -159,49 +173,50 @@
         android:maxHeight="20px"
         android:minHeight="20px"
         android:layout_alignBottom="@+id/buttonLayout"
-        android:layout_gravity="top"
+        android:layout_gravity="bottom"
         >
 
         <Button
             android:id="@+id/Page1btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="音樂播放"
             android:layout_gravity="bottom"
-            android:textColor="#ffffff"
-
-            android:background="#00FFFFFF"/>
+            android:background="#FFFFFFFF"/>
 
         <Button
             android:id="@+id/Page2btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="波形辨識"
             android:layout_gravity="bottom"
             android:onClick="Page2btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#ffffff"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page3btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:text="清單管理"
             android:layout_gravity="bottom"
             android:onClick="Page3btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#ffffff"
+            android:background="#F000"/>
 
         <Button
             android:id="@+id/Page4btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
-            android:text="設定/幫助"
+            android:text="幫助"
             android:layout_gravity="bottom"
             android:onClick="Page4btn"
-            android:background="#00FFFFFF"/>
+            android:textColor="#ffffff"
+            android:background="#F000"/>
 
     </LinearLayout>
 

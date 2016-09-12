@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class MenuActivity extends FragmentActivity implements OnGestureListener{
     ImageButton optioncancel;
     LinearLayout listcontent;
     LinearLayout option;
+    ImageView listLabel;
     ArrayList<LinearLayout> LayoutArray;
     ArrayList<LinearLayout> LayoutArray1;
     private String []defaultList = new String[]{"預設清單","全部歌曲","α-alpha","β-beta","θ-theta","自訂清單"};
@@ -220,6 +222,8 @@ public class MenuActivity extends FragmentActivity implements OnGestureListener{
                 convertView = layoutInflater.inflate(R.layout.listview_item, parent, false);
             }
                 TextView nameTV = (TextView) convertView.findViewById(R.id.nameTV);
+                listLabel = (ImageView)convertView.findViewById(R.id.listlabel);
+                listcontent = (LinearLayout) convertView.findViewById(R.id.listcontent);
             if(position>=defaultList.length) {
                 Member member = memberList.get(position-defaultList.length);
                 nameTV.setText(member.getName());
@@ -227,11 +231,11 @@ public class MenuActivity extends FragmentActivity implements OnGestureListener{
                 listDelete = (ImageButton) convertView.findViewById(R.id.listDelete);
                 listRename = (ImageButton) convertView.findViewById(R.id.listRename);
                 optioncancel = (ImageButton) convertView.findViewById(R.id.opitoncancel);
-                listcontent = (LinearLayout) convertView.findViewById(R.id.listcontent);
+//                listcontent = (LinearLayout) convertView.findViewById(R.id.listcontent);
                 option = (LinearLayout) convertView.findViewById(R.id.option);
                 //get listview_item view
                 LayoutArray.add(position-defaultList.length, listcontent);
-                LayoutArray1.add(position-defaultList.length, option);
+                LayoutArray1.add(position - defaultList.length, option);
                 ////儲存layout 來做點擊隱藏用
                 additional.setVisibility(View.VISIBLE);
                 additional.setOnClickListener(new listButtonListener(position));
@@ -239,18 +243,37 @@ public class MenuActivity extends FragmentActivity implements OnGestureListener{
                 listRename.setOnClickListener(new listButtonListener(position));
                 optioncancel.setOnClickListener(new listButtonListener(position));
             }
-            else
-              nameTV.setText(defaultList[position]);
+            else {
+                nameTV.setText(defaultList[position]);
+            }
             //button set listener
-            if(position==memberList.size()-1+defaultList.length)
+            if(position==memberList.size()-1+defaultList.length) {
                 additional.setVisibility(View.GONE);
-            else if(position==0 | position==5) {
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1); // , 1是可選寫的
                 lp.setMargins(0, 0, 0, 0);
                 nameTV.setLayoutParams(lp);//修改marginLayout
-                nameTV.setTextSize(15);
-                nameTV.setTextColor(0xFFFFFFFF);
-                nameTV.setBackgroundColor(0xFFAB5F5F);
+                nameTV.setPadding(15,40,40,40);//單位px
+                //讓新增清單貼其左邊
+            }
+            else if(position==0) {
+//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1); // , 1是可選寫的
+//                lp.setMargins(0, 0, 0, 0);
+//                nameTV.setLayoutParams(lp);//修改marginLayout
+//                nameTV.setTextSize(15);
+//                nameTV.setTextColor(0xFFFFFFFF);
+//                nameTV.setBackgroundColor(0xFFAB5F5F);
+                  nameTV.setVisibility(View.GONE);
+                  listcontent.setBackground(null);
+                  listLabel.setImageResource(R.mipmap.listlabel_default);
+            }
+            else if(position==5)
+            {
+                nameTV.setVisibility(View.GONE);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1); // , 1是可選寫的
+                lp.setMargins(0, 50, 0, 0);//單位px
+                listcontent.setLayoutParams(lp);//修改marginLayout
+                listcontent.setBackground(null);
+                listLabel.setImageResource(R.mipmap.listlabel_custom);
             }
             return convertView;
         }//若listview height 無固定會導致 position 亂序

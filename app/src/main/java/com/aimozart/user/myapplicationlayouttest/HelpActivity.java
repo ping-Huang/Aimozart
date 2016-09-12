@@ -30,7 +30,7 @@ public class HelpActivity extends Activity implements OnGestureListener {
 
     private GestureDetector detector;
     private ListView helpList;
-    private String[] item = new String[]{"Settings","畫面","聲音","Helps","使用指南","腦波學小常識","其他"};
+    private String[] item = new String[]{"Helps","使用指南","腦波學小常識"};
     private HelpAdapter adapter;
 
     private LinearLayout layer4;
@@ -49,7 +49,7 @@ public class HelpActivity extends Activity implements OnGestureListener {
         helpList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position==4 | position==5)
+                if(position==1 | position==2)
                 {
                     Intent intent = new Intent();
                     intent.putExtra("position", String.valueOf(position));
@@ -90,7 +90,7 @@ public class HelpActivity extends Activity implements OnGestureListener {
             TextView itemName = (TextView) convertView.findViewById(R.id.helpItem);
             LinearLayout helpLayout = (LinearLayout)convertView.findViewById(R.id.helpLayout);
             itemName.setText(item[position]);
-            if (position == 0 | position == 3) {
+            if (position == 0) {
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1); // , 1是可選寫的
                 lp.setMargins(0, 0, 0, 0);
                 itemName.setLayoutParams(lp);//修改marginLayout
@@ -108,7 +108,7 @@ public class HelpActivity extends Activity implements OnGestureListener {
         }
         @Override
         public int getItemViewType(int position) {
-            if(position==0 | position==3)
+            if(position==0)
                 return 1;
             else
                 return 0;

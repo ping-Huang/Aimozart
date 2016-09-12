@@ -60,7 +60,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class MediaActivity extends Activity implements OnClickListener, OnCompletionListener, OnGestureListener, OnTouchListener {
+public class MediaActivity extends Activity implements OnClickListener, OnCompletionListener, OnGestureListener {
     //MediaPlayer物件
     private MediaPlayer mediaPlayer;
     private GestureDetector detector;
@@ -71,6 +71,7 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
     private ImageButton listOption;
     private Button btnStop;
     private ImageButton btnPlayMode;
+    private ImageView btnSearch;
     public int state = 0;//記錄Rand狀態
     private TextView tvRand;
     /*state數字代表狀態
@@ -224,12 +225,14 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
         btnPlay = (ImageButton) findViewById(R.id.btnPlay);
         //btnStop = (Button) findViewById(R.id.btnStop);
         btnPlayMode = (ImageButton) findViewById(R.id.playMode);
+        btnSearch = (ImageView)findViewById(R.id.img_search);
 
         btnPrev.setOnClickListener(this);
         btnNext.setOnClickListener(this);
         btnPlay.setOnClickListener(this);
         //btnStop.setOnClickListener(this);
         btnPlayMode.setOnClickListener(this);
+        btnSearch.setOnClickListener(this);
 
         ProceseekBar=(SeekBar)findViewById(R.id.seekBar);
         ProceseekBar.setOnSeekBarChangeListener(new ProcessBarListener());
@@ -242,7 +245,6 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
         albumPicture = (ImageView)findViewById(R.id.SongPicture);
 
         searchArea = (EditText)findViewById(R.id.searcharea);
-        searchArea.setOnTouchListener(this);
         searchArea.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -382,19 +384,22 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
             case R.id.playeroption:
                 optionClick();
                 break;
+            case  R.id.img_search:
+                searchList();
+                break;
         }
     }
     private void doRand() {
         if (state == 0){//目前狀態0
             state = 1;//轉成狀態1
-            btnPlayMode.setImageResource(R.drawable.mode1);
+            btnPlayMode.setImageResource(R.mipmap.mode1);
             Toast.makeText(this,"歌曲循環",Toast.LENGTH_SHORT).show();
             //btnRand.setText("S1");
             prepointer = -1;//歸零
         }
         else if (state == 1){
             state = 2;
-            btnPlayMode.setImageResource(R.drawable.mode2);
+            btnPlayMode.setImageResource(R.mipmap.mode2);
             Toast.makeText(this,"單曲循環",Toast.LENGTH_SHORT).show();
             //btnRand.setText("S2");
             prepointer = -1;//歸零
@@ -402,19 +407,19 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
         }
         else if (state == 2){
             state = 3;
-            btnPlayMode.setImageResource(R.drawable.mode3);
+            btnPlayMode.setImageResource(R.mipmap.mode3);
             Toast.makeText(this,"隨機不循環",Toast.LENGTH_SHORT).show();
             //btnRand.setText("S3");
         }
         else if (state == 3){
             state = 4;
-            btnPlayMode.setImageResource(R.drawable.mode4);
+            btnPlayMode.setImageResource(R.mipmap.mode4);
             Toast.makeText(this,"隨機循環",Toast.LENGTH_SHORT).show();
             //btnRand.setText("S4");
         }
         else if (state == 4){
             state = 0;
-            btnPlayMode.setImageResource(R.drawable.mode0);
+            btnPlayMode.setImageResource(R.mipmap.mode0);
             Toast.makeText(this,"歌曲不循環",Toast.LENGTH_SHORT).show();
             //btnRand.setText("S0");
             prepointer = -1;//歸零
@@ -440,14 +445,14 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
         if (isPause) {
             isPause = false;
             playing();
-            btnPlay.setImageResource(R.drawable.pause);
+            btnPlay.setImageResource(R.mipmap.pause);
             //btnPlay.setText("Pause");
         }else{
             isPause = true;
             isChang = false;
             playing();
             //mediaPlayer.pause();
-            btnPlay.setImageResource(R.drawable.play);
+            btnPlay.setImageResource(R.mipmap.play);
             //btnPlay.setText("Play");
         }
 
@@ -461,9 +466,9 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
 
         if (index < songArray.size()-1) {
             if (!isPause)
-                btnPlay.setImageResource(R.drawable.pause);
+                btnPlay.setImageResource(R.mipmap.pause);
             if (isPause){
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 isChang = true;
                 position = 0;
             }
@@ -484,9 +489,9 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
            index++;*/
         else if (index == songArray.size()-1){
             if (!isPause)
-                btnPlay.setImageResource(R.drawable.pause);
+                btnPlay.setImageResource(R.mipmap.pause);
             if (isPause){
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 isChang = true;
                 position = 0;
             }
@@ -544,9 +549,9 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
 
         if (index > 0) {
             if (!isPause)
-                btnPlay.setImageResource(R.drawable.pause);
+                btnPlay.setImageResource(R.mipmap.pause);
             if (isPause){
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 isChang = true;
                 position = 0;
             }
@@ -572,9 +577,9 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
            index--;*/
         else if (index< 0){
             if (!isPause)
-                btnPlay.setImageResource(R.drawable.pause);
+                btnPlay.setImageResource(R.mipmap.pause);
             if (isPause){
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 isChang = true;
                 position = 0;
             }
@@ -597,9 +602,9 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
         }
         else if (index == 0){
             if (!isPause)
-                btnPlay.setImageResource(R.drawable.pause);
+                btnPlay.setImageResource(R.mipmap.pause);
             if (isPause){
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 isChang = true;
                 position = 0;
             }
@@ -677,7 +682,7 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
                 songCoverArt = BitmapFactory.decodeStream(in);
             }catch (FileNotFoundException e){
                 Log.e("error", e.getMessage());
-                albumPicture.setImageResource(R.drawable.songpicture);
+                albumPicture.setImageResource(R.mipmap.songpicture);
             }
             if(songCoverArt!=null)
                 albumPicture.setImageBitmap(Bitmap.createScaledBitmap(songCoverArt, albumPicture.getWidth(), albumPicture.getHeight(), false));//set album picture and it's size
@@ -779,58 +784,48 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
                 * */
         position = 0;
         isChang = false;
-        if (state == 0){//目前狀態0
+        if (state == 0 && !isPause){//目前狀態0
             //加入判斷使否為歌單中最後一首
             if (index == songArray.size()-1){
                 isPause = true;
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 doStop();
-            } else {
+            } else{
                 doNext();
             }
         }
 
-        else if (state == 1){
+        else if (state == 1 && !isPause){
             doNext();
         }
 
-        else if (state == 2){
+        else if (state == 2 && !isPause){
             //doPlay();
             playing();
         }
 
-        else if (state == 3){
+        else if (state == 3 && !isPause){
             //加入判斷使否為歌單中最後一首
             if (index == songArray.size() - 1) {
                 isPause = true;
-                btnPlay.setImageResource(R.drawable.play);
+                btnPlay.setImageResource(R.mipmap.play);
                 doStop();
-            } else {
+            } else{
                 prepointer++;
                 preindex[prepointer] = index;
                 doRandPlay();
             }
         }
 
-        else if (state == 4){
+        else if (state == 4 && !isPause){
             prepointer++;
             preindex[prepointer] = index;
             doRandPlay();
         }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event)
-    {
-        final int DRAWABLE_LEFT = 0;
-        final int DRAWABLE_TOP = 1;
-        final int DRAWABLE_RIGHT = 2;
-        final int DRAWABLE_BOTTOM = 3;
-
-        if(event.getAction() == MotionEvent.ACTION_UP){
-            if(event.getX()>=(searchArea.getWidth()- searchArea.
-                    getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width()))
-            {
+   public void searchList()
+   {
                 if(listDataBase.getSpots(searchArea.getText().toString()).size()>0)
                 {
                     Member tempmember = listDataBase.getSpots(searchArea.getText().toString()).get(0);
@@ -871,10 +866,6 @@ public class MediaActivity extends Activity implements OnClickListener, OnComple
                             Toast.makeText(this, "清單內無歌曲", Toast.LENGTH_SHORT).show();
                     }
                 }
-                return true;
-            }
-        }
-        return false;
     }
     @Override
     public void onResume()

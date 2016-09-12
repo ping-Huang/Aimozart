@@ -77,7 +77,7 @@ public class ButtonAdapter extends BaseAdapter{
         for(int i=0; i<lm.size(); i++) {
             Member m = lm.get(i);
             Map<String, String> nameMap = new HashMap<String, String>();
-            if(!m.getName().equals(playListName) && !m.getName().equals("α-alpha") && !m.getName().equals("β-beta") && !m.getName().equals("θ-theta"))
+            if(!m.getName().equals(playListName) && !m.getName().equals("α-alpha") && !m.getName().equals("β-beta") && !m.getName().equals("θ-theta") && m.getName().equals("全部歌曲"))
             {
                 nameMap.put("name", m.getName());
                 nameMap.put("music",m.getMusic());
@@ -176,9 +176,16 @@ public class ButtonAdapter extends BaseAdapter{
             holder.additionClose.setOnClickListener(new lvButtonListener(position));
             //為button 添加listener
         }
-        if(position==0 && appInfo.getName().equals("+新增歌曲"))
+        if(position==0 && appInfo.getName().equals("+新增歌曲")) {
             holder.buttonClose.setVisibility(View.GONE);
-        Log.d("position", ""+position);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1); // , 1是可選寫的
+            lp.setMargins(0, 0, 0, 0);
+            holder.appName.setLayoutParams(lp);//修改marginLayout
+            holder.appName.setPadding(15,40,40,40);//單位px
+        }
+        if(playListName.equals("α-alpha") | playListName.equals("β-beta") | playListName.equals("θ-theta") | playListName.equals("全部歌曲"))
+            holder.buttonClose.setVisibility(View.GONE);
+        Log.d("position", "" + position);
         return convertView;
     }
 

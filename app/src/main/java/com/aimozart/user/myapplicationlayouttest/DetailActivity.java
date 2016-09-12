@@ -105,8 +105,10 @@ public class DetailActivity extends FragmentActivity {
             tvTitle = (TextView) findViewById(R.id.tvTitle);
             tvTitle.setText(playListName);
             ListView lvMember = (ListView) findViewById(R.id.playlistView);
-            ArrayAdapter<String> auttonAdapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,s);
-            lvMember.setAdapter(auttonAdapter);
+//            ArrayAdapter<String> auttonAdapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,s);
+//            lvMember.setAdapter(auttonAdapter);
+            buttonAdapter = new ButtonAdapter(this, musicList, R.layout.playlistview, new int[]{R.id.list_name, R.id.additional, R.id.deletelist, R.id.movetolist,R.id.canceladdition, R.id.listcontent, R.id.option,R.id.songType}, playListName);
+            lvMember.setAdapter(buttonAdapter);
             lvMember.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
@@ -122,7 +124,7 @@ public class DetailActivity extends FragmentActivity {
             String musicContent = tempmember.getMusic();
             musicList = new ArrayList<Music>();
             musicList.clear();
-            if(!playListName.equals("α-alpha") && !playListName.equals("β-beta") && !playListName.equals("θ-theta"))
+            if(!playListName.equals("α-alpha") && !playListName.equals("β-beta") && !playListName.equals("θ-theta") && !playListName.equals("全部歌曲"))
                musicList.add(new Music(0, "+新增歌曲", "0"));
             if (!musicContent.equals("")) {
                 String[] musicOrder = musicContent.split(",");
@@ -145,7 +147,7 @@ public class DetailActivity extends FragmentActivity {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
                     //Intent intent = new Intent(DetailActivity.this, DetailMusicActivity.class);
-                    if (position == 0 && !playListName.equals("α-alpha") && !playListName.equals("β-beta") && !playListName.equals("θ-theta")) {
+                    if (position == 0 && !playListName.equals("α-alpha") && !playListName.equals("β-beta") && !playListName.equals("θ-theta")&& !playListName.equals("全部歌曲")) {
                         moveListDialog();
                     }
                     //新增歌曲
@@ -160,7 +162,7 @@ public class DetailActivity extends FragmentActivity {
                 }
             });
         }
-    }
+   }
     private class MemberAdapter extends BaseAdapter {
         private LayoutInflater layoutInflater;
 

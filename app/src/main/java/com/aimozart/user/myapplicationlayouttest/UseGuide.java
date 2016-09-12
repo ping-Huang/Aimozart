@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by user on 2016/7/26.
@@ -35,13 +36,14 @@ public class UseGuide extends Activity implements GestureDetector.OnGestureListe
             "按列表中右邊的三點，顯示要新增、刪除或重新命名音樂清單\n" +
             "點入某清單後，一樣可點選歌曲右方的三點\n" +
             "選擇新增、刪除、移動歌曲至其他清單，或者點選歌曲進入音樂播放。";
-    String []helpArray = new String []{musicPlay,musicClassify,musicList};
-    int []knowledge = new int[]{R.drawable.kalpha,R.drawable.kbeta,R.drawable.ktheta};
+//    String []helpArray = new String []{musicPlay,musicClassify,musicList};
+    int []knowledge = new int[]{R.mipmap.kalpha,R.mipmap.kbeta,R.mipmap.ktheta};
+    int []guideArray = new int[]{R.mipmap.guide_play,R.mipmap.guide_id,R.mipmap.guide_list};
     String []helpTitle = new String []{"「音樂播放」","「音樂辨識」","「音樂清單」"};
-    private TextView ht;
-    private TextView gt;
+//    private TextView ht;
+//    private TextView gt;
     private ImageButton cancelGuide;
-    private ImageView waveKnowledge;
+    private ImageView img_guide;
     private GestureDetector detector;
     private int currentPosition = 0;
     private int position;
@@ -53,19 +55,23 @@ public class UseGuide extends Activity implements GestureDetector.OnGestureListe
         Intent intent = getIntent();
         position = Integer.parseInt(intent.getStringExtra("position"));
 
+        Toast.makeText(this,"左右滑動閱讀不同指南",Toast.LENGTH_LONG).show();
+        //提示左右滑動
 
-        ht = (TextView)findViewById(R.id.guideText);
-        gt = (TextView)findViewById(R.id.guideTitle);
+
+//        ht = (TextView)findViewById(R.id.guideText);
+//        gt = (TextView)findViewById(R.id.guideTitle);
         cancelGuide = (ImageButton)findViewById(R.id.returnHelp);
-        waveKnowledge = (ImageView)findViewById(R.id.waveknowledge);
-        if(position==4) {
-            ht.setText(helpArray[currentPosition]);
-            gt.setText(helpTitle[currentPosition]);
+        img_guide = (ImageView)findViewById(R.id.waveknowledge);
+        if(position==1) {
+//            ht.setText(helpArray[currentPosition]);
+//            gt.setText(helpTitle[currentPosition]);
+           img_guide.setImageResource(guideArray[currentPosition]);
         }
-        else if(position==5) {
-            ht.setVisibility(View.GONE);
-            gt.setVisibility(View.GONE);
-            waveKnowledge.setImageResource(knowledge[currentPosition]);
+        else if(position==2) {
+//            ht.setVisibility(View.GONE);
+//            gt.setVisibility(View.GONE);
+            img_guide.setImageResource(knowledge[currentPosition]);
         }
         cancelGuide.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,24 +124,26 @@ public class UseGuide extends Activity implements GestureDetector.OnGestureListe
         if(e1.getX() - e2.getX()>distance&&Math.abs(velocityX)>speed){
             currentPosition--;
             if(currentPosition<0)
-                currentPosition = helpArray.length-1;
+                currentPosition = guideArray.length-1;
 
-            if(position==4) {
-                ht.setText(helpArray[currentPosition]);
-                gt.setText(helpTitle[currentPosition]);
+            if(position==1) {
+//                ht.setText(helpArray[currentPosition]);
+//                gt.setText(helpTitle[currentPosition]);
+                img_guide.setImageResource(guideArray[currentPosition]);
             }
-            else if(position==5)
-                waveKnowledge.setImageResource(knowledge[currentPosition]);
+            else if(position==2)
+                img_guide.setImageResource(knowledge[currentPosition]);
         }else if(e2.getX() - e1.getX()>distance&&Math.abs(velocityX)>speed){
             currentPosition++;
-            if(currentPosition>=helpArray.length)
+            if(currentPosition>=guideArray.length)
                 currentPosition = 0;
-            if(position==4) {
-                ht.setText(helpArray[currentPosition]);
-                gt.setText(helpTitle[currentPosition]);
+            if(position==1) {
+//                ht.setText(helpArray[currentPosition]);
+//                gt.setText(helpTitle[currentPosition]);
+                img_guide.setImageResource(guideArray[currentPosition]);
             }
-            else if(position==5)
-                waveKnowledge.setImageResource(knowledge[currentPosition]);
+            else if(position==2)
+                img_guide.setImageResource(knowledge[currentPosition]);
         }
         return true;
     }

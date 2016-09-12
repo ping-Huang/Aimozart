@@ -1,12 +1,12 @@
 package com.aimozart.user.myapplicationlayouttest;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends Activity {
     private EditText etName;
     private MySQLiteOpenHelper helper;
 

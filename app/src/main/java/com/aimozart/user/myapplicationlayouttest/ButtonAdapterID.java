@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ButtonAdapterID extends BaseAdapter {
     private class buttonViewHolder {
         TextView appName;
         ImageButton buttonClose;
+        LinearLayout songBg;
     }
 
     private ArrayList<HashMap<String, Object>> mAppList;
@@ -28,6 +30,7 @@ public class ButtonAdapterID extends BaseAdapter {
     private int[] valueViewID;
     private buttonViewHolder holder;
     public  ArrayList<ImageButton> buttonArray;
+    public  ArrayList<LinearLayout>bgArray;
 
     public ButtonAdapterID(Context c, ArrayList<HashMap<String, Object>> appList, int resource,
                            String[] from, int[] to) {
@@ -37,6 +40,7 @@ public class ButtonAdapterID extends BaseAdapter {
         keyString = new String[from.length];
         valueViewID = new int[to.length];
         buttonArray = new ArrayList<ImageButton>();
+        bgArray = new ArrayList<LinearLayout>() ;
         System.arraycopy(from, 0, keyString, 0, from.length);
         System.arraycopy(to, 0, valueViewID, 0, to.length);
     }
@@ -70,6 +74,8 @@ public class ButtonAdapterID extends BaseAdapter {
             holder = new buttonViewHolder();
             holder.appName = (TextView)convertView.findViewById(valueViewID[0]);
             holder.buttonClose = (ImageButton)convertView.findViewById(valueViewID[1]);
+            holder.songBg = (LinearLayout)convertView.findViewById(valueViewID[2]);
+
             convertView.setTag(holder);
         }
 
@@ -81,6 +87,7 @@ public class ButtonAdapterID extends BaseAdapter {
             holder.appName.setText(aname);
             //holder.buttonClose.setImageResource(R.drawable.select);
             buttonArray.add(position, holder.buttonClose);
+            bgArray.add(position,holder.songBg);
             holder.buttonClose.setOnClickListener(new lvButtonListener(position));
         }
         Log.d("position", ""+position);
